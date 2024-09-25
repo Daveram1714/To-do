@@ -9,26 +9,26 @@ function App() {
 
 const [items,Setitems] = useState(
   [
-       {
-            id:"1",
-            checked:false,
-            item:"Learningreact"
-       },
-       {
-            id:"2",
-            checked:false,
-            item:"Learning MongoDb"
-       },
-       {
-            id:"3",
-            checked:false,
-            item:"Placements"
-       },
-       {
-            id:"4",
-            checked:false,
-            item:"Learning  Subjects"
-       }
+  //      {
+  //           id:"1",
+  //           checked:false,
+  //           item:"Learningreact"
+  //      },
+  //      {
+  //           id:"2",
+  //           checked:false,
+  //           item:"Learning MongoDb"
+  //      },
+  //      {
+  //           id:"3",
+  //           checked:false,
+  //           item:"Placements"
+  //      },
+  //      {
+  //           id:"4",
+  //           checked:false,
+  //           item:"Learning  Subjects"
+  //      }
   ]
 );
 
@@ -73,7 +73,7 @@ const HandelCheck = (id) =>{
       console.log("Deleting task with ID:", id);
   
       await axios.delete(`http://localhost:6969/TaskDelete/${id}`);
-      const listitems = items.filter((item) => item.id !== id);
+      const listitems = items.filter((item) => item.id === id);
       Setitems(listitems);
       localStorage.setItem("To-do list", JSON.stringify(listitems));
     } catch (error) {
