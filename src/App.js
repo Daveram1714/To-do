@@ -7,14 +7,6 @@ import Search  from "./Search";
 import axios from "axios";
 function App() {
 
- /* function handelchanhe() {
-  const name = ["hi","hello"];
-  const int  = Math.floor(Math.random()*2);
-  return name[int]
-}
-*/   
-
-
 const [items,Setitems] = useState(
   [
        {
@@ -107,6 +99,7 @@ const HandelSubmit =  async (e) =>{   e.preventDefault()
     Setitems([...items,res.data])
     SetAddItems('')
   } catch (error) {
+    console.error({msg :error.msg});
     
   }        
 }
