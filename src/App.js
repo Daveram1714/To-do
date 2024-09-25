@@ -67,13 +67,20 @@ const HandelCheck = (id) =>{
    }
 
 
-
-const HandelDelete =  (id) =>{
-  const listitems = items.filter((item) =>
-       item.id !==id)
-       Setitems(listitems)
-     localStorage.setItem("To-do list",JSON.stringify(listitems))
-}
+   const HandelDelete = async (id) => {
+    try {
+      // Log the ID being sent
+      console.log("Deleting task with ID:", id);
+  
+      await axios.delete(`http://localhost:6969/TaskDelete/${id}`);
+      const listitems = items.filter((item) => item.id !== id);
+      Setitems(listitems);
+      localStorage.setItem("To-do list", JSON.stringify(listitems));
+    } catch (error) {
+      console.error("Error deleting task:", error);
+    }
+  };
+  
 
 // const HandelSubmit =  (e) =>{
    
