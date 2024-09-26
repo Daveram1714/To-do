@@ -7,30 +7,7 @@ import Search  from "./Search";
 import axios from "axios";
 function App() {
 
-const [items,Setitems] = useState(
-  [
-  //      {
-  //           id:"1",
-  //           checked:false,
-  //           item:"Learningreact"
-  //      },
-  //      {
-  //           id:"2",
-  //           checked:false,
-  //           item:"Learning MongoDb"
-  //      },
-  //      {
-  //           id:"3",
-  //           checked:false,
-  //           item:"Placements"
-  //      },
-  //      {
-  //           id:"4",
-  //           checked:false,
-  //           item:"Learning  Subjects"
-  //      }
-  ]
-);
+const [items,Setitems] = useState(['']);
 
      const [search,SetSearch] = useState(' ')
      const [addItem,SetAddItems] = useState('')
@@ -40,7 +17,6 @@ const [items,Setitems] = useState(
           const id = items.length ? items[items.length - 1].id + 1 : 1;
           const newItems = [...items, { id, checked: false, item }];
           Setitems(newItems);
-          localStorage.setItem("DO-TO list", JSON.stringify(newItems));
         }
 
 
@@ -63,7 +39,6 @@ const HandelCheck = (id) =>{
    const listitems = items.map((item) =>
         item.id===id ? {...item , checked : !item.checked} :item)
          Setitems(listitems)
-        localStorage.setItem("To-do list",JSON.stringify(listitems))
    }
 
 
@@ -75,7 +50,6 @@ const HandelCheck = (id) =>{
       await axios.delete(`http://localhost:6969/TaskDelete/${id}`);
       const listitems = items.filter((item) => item.id === id);
       Setitems(listitems);
-      localStorage.setItem("To-do list", JSON.stringify(listitems));
     } catch (error) {
       console.error("Error deleting task:", error);
     }
